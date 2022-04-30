@@ -1,0 +1,462 @@
+body {
+  background-color: #045;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #161616;
+  height: 13vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h1 {
+  font-size: 2rem;
+  color: #fc0;
+}
+
+.h2 {
+  font-size: 1.5rem;
+  color: #fc0;
+  text-align: center;
+  padding: 3vh;
+}
+
+.container1 {
+  margin: auto;
+  max-width: 800px;
+}
+
+.div-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-style: italic;
+}
+
+.div-1c {
+  display: flex;
+  height: 120px;
+  margin: 15px;
+  width: 30%;
+  background-color: rgb(3, 35, 43);
+  max-width: 30%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.select {
+  position: absolute;
+  text-align: left;
+  order: 1;
+  width: fit-content;
+  padding: 0;
+  line-height: 1rem;
+}
+
+.image {
+  order: 4;
+  margin: 0;
+  width: 55%;
+}
+.data {
+  order: 2;
+  list-style: none inside;
+  align-self: center;
+  color: white;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.div-ready {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  height: 6vh;
+}
+.div-readyn {
+  display: none;
+  justify-content: center;
+  margin-top: 5%;
+  right: 22vw;
+  top: 30vh;
+  height: 6vh;
+}
+.btn-ready {
+  margin-top: 1.4rem;
+  min-height: 32px;
+  padding: 2px 20px;
+  font-size: 1.3rem;
+  border-radius: 0.9rem;
+  background-color: rgb(3, 35, 43);
+  color: #fc0;
+  font-weight: 600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-shadow: 2px 2px 33px 4px #024;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid #fc0;
+}
+.btn-ready-n {
+  margin-top: 1.4rem;
+  min-height: 32px;
+  padding: 2px 20px;
+  font-size: 1.3rem;
+  border-radius: 0.9rem;
+  background-color: rgb(3, 35, 43);
+  color: #fc0;
+  font-weight: 600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-shadow: 2px 2px 33px 4px #024;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid #fc0;
+}
+.btn-ready:hover {
+  background-color: white;
+  color: #024;
+  cursor: pointer;
+}
+#btnReset {
+  display: none;
+  margin-top: 1.4rem;
+  min-height: 32px;
+  padding: 2px 20px;
+  font-size: 1.3rem;
+  border-radius: 0.9rem;
+  background-color: rgb(3, 35, 43);
+  color: #fc0;
+  font-weight: 600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-shadow: 2px 2px 33px 4px #024;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid #fc0;
+}
+#btnReset:hover {
+  background-color: white;
+  color: #024;
+  cursor: pointer;
+}
+.container2 {
+  height: 70vh;
+  display: none;
+}
+.h3 {
+  font-size: 1.5rem;
+  color: #fc0;
+  text-align: center;
+  margin: 10px;
+}
+.battle {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.team {
+  background-color: #eee;
+  height: 60vh;
+  width: 40%;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.pokemon {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.7;
+  border-radius: auto;
+  overflow: hidden;
+  position: relative;
+}
+.imgpokemon {
+  height: 20vh;
+  cursor: pointer;
+  background-color: white;
+  border: 2px #045 solid;
+  border-radius: 20%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.buttons {
+  height: 20vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+h4 {
+  align-self: flex-start;
+  margin-bottom: 0;
+  color: #024;
+  margin-top: 0;
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+h5 {
+  align-self: flex-start;
+  margin-bottom: 0;
+  color: #024;
+}
+
+.potion {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.fa-solid {
+  font-size: 1rem;
+  width: 3vw;
+  align-self: flex-end;
+  color: #024;
+}
+.fa-solid:hover {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: red;
+}
+
+#h5e1 {
+  color: white;
+}
+.hp {
+  height: 1.1vh;
+  width: 90%;
+  align-self: flex-start;
+  margin-bottom: 2vh;
+  border-radius: 15%;
+  display: flex;
+  border: black solid 1px;
+  box-sizing: border-box;
+}
+.barra {
+  background-color: red;
+  border-radius: 10%;
+  width: 100%;
+  transition: width 0.5s ease;
+}
+.btn-attack {
+  background-color: #024;
+  height: 5vh;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 15px;
+  border: 1px solid #045;
+  width: auto;
+  transition: color 0.3s;
+  transition: border 0.3s ease;
+}
+.btn-attack:hover {
+  border: 1px solid #fc0;
+}
+.enemy {
+  background-color: #161616;
+  width: 40%;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.imgpokemonenemy {
+  height: 20vh;
+  background-color: white;
+  border: 2px #045 solid;
+  border-radius: 20%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hp-enemy {
+  height: 1.1vh;
+  width: 90%;
+  align-self: flex-start;
+  margin-bottom: 2vh;
+  border-radius: 15%;
+  display: flex;
+  border: black solid 1px;
+  box-sizing: border-box;
+}
+.h4enemy {
+  align-self: flex-start;
+  margin-bottom: 0;
+  color: white;
+}
+.atacado {
+  animation-name: atacado;
+  animation-duration: 0.9s;
+}
+.curado {
+  animation-name: curado;
+  animation-duration: 1s;
+}
+.atacante {
+  animation-name: atacante;
+  animation-duration: 1s;
+}
+.atacante2 {
+  animation: atacante2;
+  animation-duration: 1s;
+}
+.danio {
+  position: absolute;
+  left: 15%;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.danio2 {
+  position: absolute;
+  left: 15%;
+  font-weight: 700;
+  opacity: 0;
+}
+.dañoRecibido {
+  animation-name: danio;
+  animation-duration: 2.5s;
+}
+@keyframes danio {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes atacante {
+  0% {
+    transform: scale(1.5);
+  }
+  10% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    background: white;
+  }
+}
+@keyframes atacante2 {
+  10% {
+    transform: rotate(30deg);
+  }
+  100% {
+    background: white;
+  }
+}
+@keyframes atacado {
+  0% {
+    background: red;
+    transform: skew(7deg);
+  }
+  100% {
+    background: white;
+  }
+}
+@keyframes curado {
+  0% {
+    background: green;
+    transform: rotate(180deg);
+  }
+  100% {
+    background: white;
+  }
+}
+.relato {
+  height: 14vh;
+  background-color: white;
+  color: #024;
+  position: absolute;
+  bottom: 0px;
+  border: #024 solid 2px;
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 5px;
+}
+
+.container3 {
+  position: absolute;
+  bottom: 0;
+  height: 50vh;
+  background-color: #161616;
+  color: #fc0;
+  font-size: 2.5rem;
+  padding: 5px;
+  width: 100vw;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 900;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .h1 {
+    font-size: 1.9rem;
+  }
+  .h2 {
+    margin-bottom: 0;
+    margin-top: 1rem;
+  }
+  .div-1 {
+    position: relative;
+    right: 50px;
+    margin-top: 0;
+    flex-direction: column;
+  }
+  .div-1c {
+    height: 100px;
+    width: 39%;
+    max-width: 39%;
+  }
+  select {
+    width: 60%;
+  }
+  .btn-ready {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+  }
+  .btn-ready-n {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .btn-attack {
+    font-size: 0.75rem;
+  }
+  .relato {
+    font-size: 0.9rem;
+    overflow: auto;
+  }
+  h5 {
+    font-size: 0.75rem;
+  }
+  .team {
+    width: 55%;
+  }
+  .enemy {
+    min-width: 25%;
+  }
+  #pokemonenemy1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  #pokemonenemy1 .buttons {
+    width: 95%;
+    margin-left: 15px;
+  }
+  .buttons {
+    margin-left: 2px;
+  }
+  .danio2 {
+    left: 50%;
+  }
+  #finalTitle {
+    font-size: 2.1rem;
+  }
+}
