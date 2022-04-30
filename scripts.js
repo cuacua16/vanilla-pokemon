@@ -81,7 +81,7 @@ const batalla = (equipo, enemigo, boton) => {
         pociones[i].style.display = "none";
         imagenes[i].classList.add("curado");
       });
-      pokemon[i].style.opacity = 0.7;
+      pokemon[i].style.opacity = 0.5;
     }
     for (let i = 0; i < imagenes.length; i++) {
       imagenes[i].addEventListener("click", (e) => {
@@ -94,7 +94,7 @@ const batalla = (equipo, enemigo, boton) => {
               pokemonActivo = pok;
               btnattack[i].removeAttribute("disabled", true);
               for (let k = 0; k < imagenes.length; k++) {
-                pokemon[k].style.opacity = 0.7;
+                pokemon[k].style.opacity = 0.5;
               }
               pokemon[i].style.opacity = 1;
               btnattack[i].style.opacity = 1;
@@ -105,7 +105,7 @@ const batalla = (equipo, enemigo, boton) => {
                 }
                 relato.innerHTML = "";
                 btnattack[i].setAttribute("disabled", true);
-                pokemon[i].style.opacity = 0.7;
+                pokemon[i].style.opacity = 0.5;
                 setTimeout(() => {
                   for (let m = 0; m < imagenes.length; m++) {
                     imagenes[m].style.pointerEvents = "auto";
@@ -163,7 +163,6 @@ const batalla = (equipo, enemigo, boton) => {
             barraenemy1.style.width = `${enemigo[0].hp}%`;
             h4e1.textContent = enemigo[0].hp;
           } else {
-            pokemonenemy1.style.opacity = 0.3;
             barraenemy1.style.width = `0%`;
             h4e1.textContent = 0;
             relato.innerHTML += `<br><b>${enemigo[0].nombre} ha muerto!</b>`;
@@ -180,8 +179,13 @@ const batalla = (equipo, enemigo, boton) => {
           }
         }
         btnattack[i].setAttribute("disabled", "true");
-        btnattack[i].style.opacity = 0.7;
+        for (let m = 0; m < imagenes.length; m++) {
+          imagenes[m].style.pointerEvents = "none";
+        }
         setTimeout(() => {
+          for (let m = 0; m < imagenes.length; m++) {
+            imagenes[m].style.pointerEvents = "auto";
+          }
           if (enemigo.length > 0) {
             imgpokemonenemy1.classList.remove("atacado");
             danio2.classList.remove("dañoRecibido");
@@ -274,7 +278,7 @@ dragonite = new Pokemon("Dragonite", "volador", "assets/images/dragonyte.png");
 mewtwo = new Pokemon("Mewtwo", "psiquico", "assets/images/mewtwo.png");
 mew = new Pokemon("Mew", "psiquico", "assets/images/mew.png");
 scizor = new Pokemon("Scizor", "volador", "assets/images/scizor.png");
-raikou = new Pokemon("Raikow", "electrico", "assets/images/raikou.png");
+raikou = new Pokemon("Raikou", "electrico", "assets/images/raikou.png");
 entei = new Pokemon("Entei", "fuego", "assets/images/entei.png");
 suicune = new Pokemon("Suicune", "agua", "assets/images/suicune.png");
 tyranitar = new Pokemon("Tyranitar", "roca", "assets/images/tyranitar.png");
@@ -373,6 +377,14 @@ let equipo = [];
 const btnReady = document.getElementById("btn-ready");
 btnReady.addEventListener("click", () => {
   if (
+    selects[0].value == "" ||
+    selects[1].value == "" ||
+    selects[2].value == ""
+  ) {
+    alert("elegime 3 coquemones porfi, que se me buguea el jueguito :D");
+    return false;
+  }
+  if (
     selects[0].value == selects[1].value ||
     selects[1].value == selects[2].value ||
     selects[2].value == selects[0].value
@@ -380,6 +392,7 @@ btnReady.addEventListener("click", () => {
     alert("eeee no vale repetirlos");
     return false;
   }
+
   for (const select of selects) {
     for (const pokemon of pokemones) {
       if (select.value == pokemon.nombre) {
@@ -387,6 +400,7 @@ btnReady.addEventListener("click", () => {
       }
     }
   }
+
   container1.style.display = "none";
   container2.style.display = "block";
   imgpokemon1.src = equipo[0].image;
