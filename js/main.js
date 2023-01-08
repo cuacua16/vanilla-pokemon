@@ -11,7 +11,7 @@ import {Pokemon} from "./Pokemon.class.js";
   const danios = document.querySelectorAll(".danio");
   const danio2 = document.querySelector(".danio2");
 
-  const batalla = (equipo, enemigo, boton) => {
+  const batalla = (equipo, enemigo) => {
     let hpTemp;
     let pokemonActivo;
     const promesa = new Promise((res, rej) => {
@@ -113,7 +113,6 @@ import {Pokemon} from "./Pokemon.class.js";
               relato.innerHTML += `<br><b>${enemigo.nombre} ha muerto!</b>`;
               if (enemigo.hp < 1) {
                 enemy.style.display = "none";
-                boton.style.display = "block";
               }
               pokemonActivo = undefined;
               imgpokemonenemy1.classList.remove("atacado");
@@ -411,37 +410,14 @@ import {Pokemon} from "./Pokemon.class.js";
     nextLevel(nivel, contadorEnemigo);
   });
 
-  const gameOver = () => {
-    const gifs = ["assets/images/gameover.gif", "assets/images/gameover2.gif"];
-    container2.style.display = "none";
-    container3.style.display = "block";
-    finalImage.src = gifs[Math.round(Math.random())];
-    btnReset.style.display = "block";
-    btnReset.addEventListener("click", () => {
-      location.reload();
-    });
-  };
 
   let nivel = 1;
   let contadorEnemigo = 0;
-  let botones = [
-    ",",
-    btnReady,
-    btnReady2,
-    btnReady3,
-    btnReady4,
-    btnReady5,
-    btnReady6,
-    btnReady7,
-    btnReady8,
-    btnReady9,
-    btnReady10,
-  ];
 
-  function nextLevel(nivel, contadorEnemigo) {
+  function nextLevel() {
     h3.textContent = `Nivel ${nivel}`;
     if (nivel > 1) {
-      botones[nivel].style.display = "none";
+      btnReady2.style.display = "none";
     }
     enemy.style.display = "flex";
     for (const cokemon of equipo) {
@@ -460,28 +436,30 @@ import {Pokemon} from "./Pokemon.class.js";
     pokemonenemy1.style.opacity = 1;
 
     nivel++;
-    batalla(equipo, enemigo, botones[nivel])
+    batalla(equipo, enemigo)
       .then((eq) => {
         equipo = eq;
+        contadorEnemigo += 2;
+        btnReady2.style.display = "block";
       })
       .catch((e) => {
         console.log(e);
         gameOver();
       });
-
-    botones[nivel].addEventListener("click", () => {
-      contadorEnemigo += 2;
-      if (botones[nivel] == btnReady10) {
-        nivel10();
-      } else {
-        nextLevel(nivel, contadorEnemigo);
-      }
-    });
   }
+
+  btnReady2.addEventListener("click", ()=>{
+    if (nivel == 10) {
+      nivel10();
+    } else {
+      nextLevel();
+    }
+  });
+    
 
   const nivel10 = () => {
     h3.textContent = "Nivel FINAL";
-    btnReady10.style.display = "none";
+    btnReady2.style.display = "none";
     enemy.style.display = "flex";
     for (const cokemon of equipo) {
       for (let i = 0; i < 25; i++) {
@@ -498,7 +476,7 @@ import {Pokemon} from "./Pokemon.class.js";
     barraenemy1.style.width = `${enemigo.hp}%`;
     pokemonenemy1.style.opacity = 1;
 
-    batalla(equipo, enemigo, btnReady10)
+    batalla(equipo, enemigo)
       .then(() => {
         win();
       })
@@ -506,17 +484,24 @@ import {Pokemon} from "./Pokemon.class.js";
         console.log(e);
         gameOver();
       });
-    btnReady10.addEventListener("click", () => {
-      win();
-    });
   };
 
   const win = () => {
     const gifs = ["assets/images/win.gif ", "assets/images/win2.gif"];
     container2.style.display = "none";
     container3.style.display = "block";
-    container3.style.backgroundColor = "#d4d9e2";
+    container3.style.backgroundColor = "#1a3c7d";
     finalTitle.textContent = "¡¡¡GANASTEEE!!!";
+    finalImage.src = gifs[Math.round(Math.random())];
+    btnReset.style.display = "block";
+    btnReset.addEventListener("click", () => {
+      location.reload();
+    });
+  };
+  const gameOver = () => {
+    const gifs = ["assets/images/gameover.gif", "assets/images/gameover2.gif"];
+    container2.style.display = "none";
+    container3.style.display = "block";
     finalImage.src = gifs[Math.round(Math.random())];
     btnReset.style.display = "block";
     btnReset.addEventListener("click", () => {
