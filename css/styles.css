@@ -29,6 +29,13 @@ body {
   box-shadow: 1px 1px 12px var(--colorA);
 }
 
+.record{
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  color:var(--colorF)
+}
+
 .h1 {
   font-size: 2rem;
   color: var(--colorF);
@@ -253,7 +260,7 @@ h5 {
   background-color: red;
   border-radius: 10%;
   width: 100%;
-  transition: width 0.5s ease;
+  transition: width 0.55s ease;
 }
 .btn-attack {
   background-color: var(--colorB);

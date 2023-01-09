@@ -10,11 +10,19 @@ import {Pokemon} from "./Pokemon.class.js";
   const pociones = document.querySelectorAll(".fa-solid");
   const danios = document.querySelectorAll(".danio");
   const danio2 = document.querySelector(".danio2");
+  const record = document.querySelector(".record");
 
   const batalla = (equipo, enemigo) => {
     let hpTemp;
     let pokemonActivo;
+
     const promesa = new Promise((res, rej) => {
+      imgpokemonenemy1.src = enemigo.image;
+    imgpokemonenemy1.setAttribute("title", `Tipo ${enemigo.tipo}`);
+    h4e1.textContent = `${enemigo.hp}`;
+    h5e1.innerHTML = `<i>${enemigo.nombre}</i>`;
+    barraenemy1.style.width = `${enemigo.hp}%`;
+    pokemonenemy1.style.opacity = 1;
       for (let i = 0; i < equipo.length; i++) {
         barra[i].style.width = `${equipo[i].hp}%`;
         h4s[i].textContent = `${equipo[i].hp}`;
@@ -279,7 +287,7 @@ import {Pokemon} from "./Pokemon.class.js";
   const lugia = new Pokemon("Lugia", "psiquico", "assets/images/lugia.png");
   const hooh = new Pokemon("Ho-Oh", "fuego", "assets/images/ho-oh.png");
 
-  const pokemones = [
+  let pokemones = [
     chikorita,
     charizard,
     bulbasaur,
@@ -296,9 +304,7 @@ import {Pokemon} from "./Pokemon.class.js";
     lapras,
   ];
 
-  const avanzados = [scyther, gyarados, onix, snorlax, dragonite, scizor];
-
-  const salvajes = [
+  let salvajes = [
     butterfree,
     rattata,
     zubat,
@@ -321,21 +327,25 @@ import {Pokemon} from "./Pokemon.class.js";
     tyranitar,
   ];
 
-  const legendarios = [
+  let legendarios = [
     articuno,
     zapdos,
     moltres,
     raikou,
     entei,
     suicune,
+  ];
+
+  let legendariosFinal =[
     lugia,
     hooh,
-  ];
+  ]
 
   const select1 = document.getElementById("select1");
   const select2 = document.getElementById("select2");
   const select3 = document.getElementById("select3");
   const selects = [select1, select2, select3];
+  record.textContent += localStorage.getItem("record") || 0 
 
   for (const select of selects) {
     const fragment = document.createDocumentFragment();
@@ -410,15 +420,12 @@ import {Pokemon} from "./Pokemon.class.js";
     nextLevel(nivel, contadorEnemigo);
   });
 
-  let nivel = 1;
-  let contadorEnemigo = 0;
+  let nivel = 10;
+  let contadorEnemigo = 18;
+  let contadorLegendarios = 0
+  let puntaje= 0
 
   function nextLevel() {
-    h3.textContent = `Nivel ${nivel}`;
-    if (nivel > 1) {
-      btnReady2.style.display = "none";
-    }
-    enemy.style.display = "flex";
     for (const cokemon of equipo) {
       for (let i = 0; i < 25; i++) {
         if (cokemon.hp < 100 && cokemon.hp > 0) {
@@ -426,20 +433,24 @@ import {Pokemon} from "./Pokemon.class.js";
         }
       }
     }
-    const enemigo = salvajes[Math.round(Math.random()) + contadorEnemigo];
-    imgpokemonenemy1.src = enemigo.image;
-    imgpokemonenemy1.setAttribute("title", `Tipo ${enemigo.tipo}`);
-    h4e1.textContent = `${enemigo.hp}`;
-    h5e1.innerHTML = `<i>${enemigo.nombre}</i>`;
-    barraenemy1.style.width = `${enemigo.hp}%`;
-    pokemonenemy1.style.opacity = 1;
-
-    nivel++;
+    h3.textContent = `Nivel ${nivel}`;
+    enemy.style.display = "flex";
+    let enemigo = salvajes[Math.round(Math.random()) + contadorEnemigo];
+    if(!enemigo){
+      salvajes = []
+      enemigo = legendarios[Math.round(Math.random()) + contadorLegendarios]
+      contadorLegendarios += 2;
+      if(!enemigo){
+         return nivelFinal()
+      }
+    }
+    
     batalla(equipo, enemigo)
       .then((eq) => {
         equipo = eq;
         contadorEnemigo += 2;
-        btnReady2.style.display = "block";
+        nivel++;
+        nextLevel()
       })
       .catch((e) => {
         console.log(e);
@@ -447,18 +458,7 @@ import {Pokemon} from "./Pokemon.class.js";
       });
   }
 
-  btnReady2.addEventListener("click", () => {
-    if (nivel == 10) {
-      nivel10();
-    } else {
-      nextLevel();
-    }
-  });
-
-  const nivel10 = () => {
-    h3.textContent = "Nivel FINAL";
-    btnReady2.style.display = "none";
-    enemy.style.display = "flex";
+  const nivelFinal = () => {
     for (const cokemon of equipo) {
       for (let i = 0; i < 25; i++) {
         if (cokemon.hp < 100 && cokemon.hp > 0) {
@@ -466,14 +466,9 @@ import {Pokemon} from "./Pokemon.class.js";
         }
       }
     }
-    const enemigo = legendarios[Math.floor(Math.random() * 8)];
-    imgpokemonenemy1.src = enemigo.image;
-    imgpokemonenemy1.setAttribute("title", `Tipo ${enemigo.tipo}`);
-    h4e1.textContent = `${enemigo.hp}`;
-    h5e1.innerHTML = `<i>${enemigo.nombre}</i>`;
-    barraenemy1.style.width = `${enemigo.hp}%`;
-    pokemonenemy1.style.opacity = 1;
-
+    const enemigo = legendariosFinal[Math.round(Math.random())];
+    h3.textContent = "Nivel FINAL";
+    enemy.style.display = "flex";
     batalla(equipo, enemigo)
       .then(() => {
         win();
@@ -495,7 +490,13 @@ import {Pokemon} from "./Pokemon.class.js";
     btnReset.addEventListener("click", () => {
       location.reload();
     });
+    puntaje = nivel * 100 * (equipo.reduce((a,p)=>a+(p.hp > 0 ? p.hp : 1),0) /2)
+    let recordViejo = localStorage.getItem("record")
+    if(puntaje > JSON.parse(recordViejo) || !recordViejo){
+      localStorage.setItem("record", JSON.stringify(puntaje) )
+    }
   };
+
   const gameOver = () => {
     const gifs = ["assets/images/gameover.gif", "assets/images/gameover2.gif"];
     container2.style.display = "none";
@@ -505,5 +506,11 @@ import {Pokemon} from "./Pokemon.class.js";
     btnReset.addEventListener("click", () => {
       location.reload();
     });
+    puntaje = nivel * 3000 * (equipo.reduce((a,p)=>a+(p.hp > 0 ? p.hp : 1),0) /2)
+    let recordViejo = localStorage.getItem("record")
+    if(puntaje > JSON.parse(recordViejo) || !recordViejo){
+      localStorage.setItem("record", JSON.stringify(puntaje) )
+    }
+    
   };
 })();
