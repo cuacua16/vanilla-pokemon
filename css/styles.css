@@ -390,10 +390,12 @@ h5 {
   position: absolute;
   bottom: 0px;
   box-shadow: -1px -1px 10px var(--colorC);
+  text-shadow: 1px 1px 2px var(--colorC);
   box-sizing: border-box;
   width: 100vw;
   padding: 5px;
   padding-top: 10px;
+  font-weight: 600;
 }
 
 .container3 {

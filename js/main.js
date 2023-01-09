@@ -410,7 +410,6 @@ import {Pokemon} from "./Pokemon.class.js";
     nextLevel(nivel, contadorEnemigo);
   });
 
-
   let nivel = 1;
   let contadorEnemigo = 0;
 
@@ -448,14 +447,13 @@ import {Pokemon} from "./Pokemon.class.js";
       });
   }
 
-  btnReady2.addEventListener("click", ()=>{
+  btnReady2.addEventListener("click", () => {
     if (nivel == 10) {
       nivel10();
     } else {
       nextLevel();
     }
   });
-    
 
   const nivel10 = () => {
     h3.textContent = "Nivel FINAL";
