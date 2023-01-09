@@ -420,8 +420,8 @@ import {Pokemon} from "./Pokemon.class.js";
     nextLevel(nivel, contadorEnemigo);
   });
 
-  let nivel = 10;
-  let contadorEnemigo = 18;
+  let nivel = 1;
+  let contadorEnemigo = 0;
   let contadorLegendarios = 0
   let puntaje= 0
 
