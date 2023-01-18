@@ -5,12 +5,6 @@
   --colorD: #101217;
   --colorE: #0c0d0d;
   --colorF: #d4d9e2;
-
-  /* --colorA: #120907;
-  --colorB: #29253e;
-  --colorC: #63628e;
-  --colorD: #a9a5eb;
-  --colorE: #ece2ed; */
 }
 
 body {
@@ -29,11 +23,11 @@ body {
   box-shadow: 1px 1px 12px var(--colorA);
 }
 
-.record{
+.record {
   position: fixed;
   left: 20px;
   top: 20px;
-  color:var(--colorF)
+  color: var(--colorC);
 }
 
 .h1 {
@@ -62,13 +56,13 @@ body {
 
 .div-1c {
   display: flex;
-  height: 125px;
+  min-height: 130px;
   margin: 15px;
+  min-width: 30%;
   width: 30%;
   background-color: var(--colorD);
   border-radius: 5%;
   overflow: hidden;
-  max-width: 30%;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   box-shadow: 2px 2px 10px var(--colorC);
 }
@@ -122,7 +116,7 @@ option {
   min-height: 32px;
   padding: 2px 20px;
   font-size: 1.3rem;
-  border-radius: 0.9rem;
+  border-radius: 0.6rem;
   background-color: var(--colorD);
   color: var(--colorB);
   font-weight: 600;
@@ -141,35 +135,20 @@ option {
 
 #btnReset {
   display: none;
-  margin-top: 1.4rem;
-  min-height: 32px;
-  padding: 2px 20px;
-  font-size: 1.3rem;
-  border-radius: 0.9rem;
-  background-color: var(--colorD);
-  color: var(--colorB);
-  font-weight: 600;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  box-shadow: 1px 1px 5px 3px var(--colorB);
-  transition: all 0.2s, color 0.2s;
-  border: 1px solid var(--colorD);
 }
-#btnReset:hover {
-  background-color: var(--colorC);
-  color: var(--colorE);
-  cursor: pointer;
-  box-shadow: 1px 1px 5px 3px var(--colorA);
-}
+
 .container2 {
   height: 70vh;
   display: none;
 }
+
 #h3 {
   font-size: 1.5rem;
   color: var(--colorC);
   text-align: center;
   margin: 10px;
 }
+
 .battle {
   display: flex;
   justify-content: space-around;
@@ -178,13 +157,16 @@ option {
 }
 
 .team {
-  background-color: var(--colorD);
+  background-color: var(--colorE);
   height: 60vh;
+  min-width: 200px;
+  max-width: 400px;
   width: 40%;
   border-radius: 10%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: all 0.4 ease;
 }
 .pokemon {
   display: flex;
@@ -268,15 +250,18 @@ h5 {
   color: var(--colorF);
   font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 15px;
+  border-radius: 0.6rem;
   border: 1px solid var(--colorC);
   width: auto;
-  transition: color 0.3s;
-  transition: border 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 50px;
+  bottom: 20px;
 }
 .btn-attack:hover {
   border: 1px solid var(--colorE);
   cursor: pointer;
+  background-color: var(--colorC);
 }
 .enemy {
   background-color: var(--colorE);
@@ -420,13 +405,30 @@ h5 {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 968px) {
+  .team {
+    width: 55%;
+  }
+  .btn-attack {
+    right: 7vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .h1 {
     font-size: 1.9rem;
+    padding-top: 1rem;
+  }
+  .record {
+    top: 4px;
+    left: 4px;
   }
   .h2 {
     margin-bottom: 0;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+  }
+  .container1 {
+    padding: 0;
   }
   .div-1 {
     position: relative;
@@ -435,34 +437,42 @@ h5 {
     flex-direction: column;
   }
   .div-1c {
-    height: 100px;
-    width: 39%;
-    max-width: 39%;
+    min-width: 210px;
   }
-  /* .select {
-    width: 60%;
-  } */
-  .btn-ready {
+  #btn-ready {
     position: absolute;
-    right: 6%;
+    right: 10%;
     top: 50%;
   }
-
   .btn-attack {
-    font-size: 0.75rem;
+    right: 4vw;
+    font-size: 0.8rem;
   }
+
   .relato {
-    font-size: 0.9rem;
-    overflow: auto;
+    font-size: 0.8rem;
   }
   h5 {
     font-size: 0.75rem;
   }
   .team {
-    width: 55%;
+    width: 60%;
+    height: 60vh;
+    border-radius: 1%;
+  }
+  .team .pokemon {
+    height: 20vh;
   }
   .enemy {
-    min-width: 25%;
+    min-width: 15%;
+  }
+  .enemy .buttons {
+    flex-grow: unset;
+    width: 2vw;
+  }
+  .imgpokemonenemy {
+    width: 100px;
+    height: 100px;
   }
   #pokemonenemy1 {
     flex-direction: column;

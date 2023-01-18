@@ -1,4 +1,4 @@
-import {Pokemon} from "./Pokemon.class.js";
+import { Pokemon } from "./Pokemon.class.js";
 
 (function vanillaPokemon() {
   const imagenes = document.querySelectorAll(".imgpokemon");
@@ -18,11 +18,11 @@ import {Pokemon} from "./Pokemon.class.js";
 
     const promesa = new Promise((res, rej) => {
       imgpokemonenemy1.src = enemigo.image;
-    imgpokemonenemy1.setAttribute("title", `Tipo ${enemigo.tipo}`);
-    h4e1.textContent = `${enemigo.hp}`;
-    h5e1.innerHTML = `<i>${enemigo.nombre}</i>`;
-    barraenemy1.style.width = `${enemigo.hp}%`;
-    pokemonenemy1.style.opacity = 1;
+      imgpokemonenemy1.setAttribute("title", `Tipo ${enemigo.tipo}`);
+      h4e1.textContent = `${enemigo.hp}`;
+      h5e1.innerHTML = `<i>${enemigo.nombre}</i>`;
+      barraenemy1.style.width = `${enemigo.hp}%`;
+      pokemonenemy1.style.opacity = 1;
       for (let i = 0; i < equipo.length; i++) {
         barra[i].style.width = `${equipo[i].hp}%`;
         h4s[i].textContent = `${equipo[i].hp}`;
@@ -327,25 +327,15 @@ import {Pokemon} from "./Pokemon.class.js";
     tyranitar,
   ];
 
-  let legendarios = [
-    articuno,
-    zapdos,
-    moltres,
-    raikou,
-    entei,
-    suicune,
-  ];
+  let legendarios = [articuno, zapdos, moltres, raikou, entei, suicune];
 
-  let legendariosFinal =[
-    lugia,
-    hooh,
-  ]
+  let legendariosFinal = [lugia, hooh];
 
   const select1 = document.getElementById("select1");
   const select2 = document.getElementById("select2");
   const select3 = document.getElementById("select3");
   const selects = [select1, select2, select3];
-  record.textContent += localStorage.getItem("record") || 0 
+  record.textContent += localStorage.getItem("record") || 0;
 
   for (const select of selects) {
     const fragment = document.createDocumentFragment();
@@ -422,8 +412,8 @@ import {Pokemon} from "./Pokemon.class.js";
 
   let nivel = 1;
   let contadorEnemigo = 0;
-  let contadorLegendarios = 0
-  let puntaje= 0
+  let contadorLegendarios = 0;
+  let puntaje = 0;
 
   function nextLevel() {
     for (const cokemon of equipo) {
@@ -436,24 +426,23 @@ import {Pokemon} from "./Pokemon.class.js";
     h3.textContent = `Nivel ${nivel}`;
     enemy.style.display = "flex";
     let enemigo = salvajes[Math.round(Math.random()) + contadorEnemigo];
-    if(!enemigo){
-      salvajes = []
-      enemigo = legendarios[Math.round(Math.random()) + contadorLegendarios]
+    if (!enemigo) {
+      salvajes = [];
+      enemigo = legendarios[Math.round(Math.random()) + contadorLegendarios];
       contadorLegendarios += 2;
-      if(!enemigo){
-         return nivelFinal()
+      if (!enemigo) {
+        return nivelFinal();
       }
     }
-    
+
     batalla(equipo, enemigo)
       .then((eq) => {
         equipo = eq;
         contadorEnemigo += 2;
         nivel++;
-        nextLevel()
+        nextLevel();
       })
       .catch((e) => {
-        console.log(e);
         gameOver();
       });
   }
@@ -474,7 +463,6 @@ import {Pokemon} from "./Pokemon.class.js";
         win();
       })
       .catch((e) => {
-        console.log(e);
         gameOver();
       });
   };
@@ -490,10 +478,11 @@ import {Pokemon} from "./Pokemon.class.js";
     btnReset.addEventListener("click", () => {
       location.reload();
     });
-    puntaje = nivel * 100 * (equipo.reduce((a,p)=>a+(p.hp > 0 ? p.hp : 1),0) /2)
-    let recordViejo = localStorage.getItem("record")
-    if(puntaje > JSON.parse(recordViejo) || !recordViejo){
-      localStorage.setItem("record", JSON.stringify(puntaje) )
+    puntaje =
+      nivel * 100 * (equipo.reduce((a, p) => a + (p.hp > 0 ? p.hp : 1), 0) / 2);
+    let recordViejo = localStorage.getItem("record");
+    if (puntaje > JSON.parse(recordViejo) || !recordViejo) {
+      localStorage.setItem("record", JSON.stringify(puntaje));
     }
   };
 
@@ -506,11 +495,13 @@ import {Pokemon} from "./Pokemon.class.js";
     btnReset.addEventListener("click", () => {
       location.reload();
     });
-    puntaje = nivel * 3000 * (equipo.reduce((a,p)=>a+(p.hp > 0 ? p.hp : 1),0) /2)
-    let recordViejo = localStorage.getItem("record")
-    if(puntaje > JSON.parse(recordViejo) || !recordViejo){
-      localStorage.setItem("record", JSON.stringify(puntaje) )
+    puntaje =
+      nivel *
+      3000 *
+      (equipo.reduce((a, p) => a + (p.hp > 0 ? p.hp : 1), 0) / 2);
+    let recordViejo = localStorage.getItem("record");
+    if (puntaje > JSON.parse(recordViejo) || !recordViejo) {
+      localStorage.setItem("record", JSON.stringify(puntaje));
     }
-    
   };
 })();

@@ -1,146 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/chikorit.png"
-      type="image/x-icon"
-    />
-    <title>Vanilla Pokemon</title>
-    <script
-      src="https://kit.fontawesome.com/831b4209f6.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
 
-  <body>
-    <header id="header" class="header">
-      <span class="record">Tu record: </span>
-      <h1 class="h1">Vanilla Pokemon</h1>
-    </header>
-    <main>
-      <div class="container1" id="container1">
-        <h2 id="h2" class="h2">Elegí 3 Pokemones!</h2>
-        <div class="div-1">
-          <div class="div-1c">
-            <select name="" class="select" id="select1"></select>
-          </div>
-          <div class="div-1c">
-            <select name="" class="select" id="select2"></select>
-          </div>
-          <div class="div-1c">
-            <select name="" class="select" id="select3"></select>
-          </div>
-        </div>
-        <div class="div-ready">
-          <button class="btn-ready" id="btn-ready">Listo</button>
-        </div>
-      </div>
-      <div class="container2" id="container2">
-        <h3 id="h3"></h3>
-        <div class="battle">
-          <div class="team">
-            <div class="pokemon" id="pokemon1">
-              <img src="" alt="" class="imgpokemon" id="imgpokemon1" />
-              <span class="danio"></span>
-              <div class="buttons">
-                <div class="potion">
-                  <h5 class="h5" id="h51"></h5>
-                  <i class="fa-solid fa-kit-medical" title="Curar"></i>
-                </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/images/chikorit.png" type="image/x-icon" />
+  <title>Vanilla Pokemon</title>
+  <script src="https://kit.fontawesome.com/831b4209f6.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-                <h4>HP: <span class="h4" id="h41"></span></h4>
-                <div class="hp" id="hp1">
-                  <div class="barra" id="barra1"></div>
-                </div>
-                <button class="btn-attack" id="btnattack1" disabled>
-                  Ataque!
-                </button>
-              </div>
-            </div>
-            <div class="pokemon" id="pokemon2">
-              <img src="" alt="" class="imgpokemon" id="imgpokemon2" />
-              <span class="danio"></span>
-              <div class="buttons">
-                <div class="potion">
-                  <h5 class="h5" id="h52"></h5>
-                  <i class="fa-solid fa-kit-medical" title="Curar"></i>
-                </div>
-                <h4>HP: <span class="h4" id="h42"></span></h4>
-                <div class="hp" id="hp2">
-                  <div class="barra" id="barra2"></div>
-                </div>
-                <button class="btn-attack" id="btnattack2" disabled>
-                  Ataque!
-                </button>
-              </div>
-            </div>
-            <div class="pokemon" id="pokemon3">
-              <img src="" alt="" class="imgpokemon" id="imgpokemon3" />
-              <span class="danio"></span>
-              <div class="buttons">
-                <div class="potion">
-                  <h5 class="h5" id="h53"></h5>
-                  <i class="fa-solid fa-kit-medical" title="Curar"></i>
-                </div>
-                <h4>HP: <span class="h4" id="h43"></span></h4>
-                <div class="hp" id="hp3">
-                  <div class="barra" id="barra3"></div>
-                </div>
-                <button class="btn-attack" id="btnattack3" disabled>
-                  Ataque!
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="enemy" id="enemy">
-            <div class="pokemon" id="pokemonenemy1">
-              <img
-                src=""
-                alt=""
-                class="imgpokemonenemy"
-                id="imgpokemonenemy1"
-              />
-              <span class="danio2"></span>
-              <div class="buttons">
-                <h5 class="h5" id="h5e1"></h5>
-                <h4 class="h4enemy">HP: <span id="h4e1"></span></h4>
-                <div class="hp-enemy" id="hpenemy1">
-                  <div class="barra" id="barraenemy1"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="div-ready div-readyn" id="btnReady2">
-            <button class="btn-ready">Siguiente</button>
-          </div>
-          <div class="div-ready div-readyn" id="btnReady10">
-            <button class="btn-ready">Siguiente</button>
-          </div>
+<body>
+  <header id="header" class="header">
+    <span class="record">Tu record: </span>
+    <h1 class="h1">Vanilla Pokemon</h1>
+  </header>
+  <main>
+    <div class="container1" id="container1">
+      <h2 id="h2" class="h2">Elegí 3 Pokemones!</h2>
+      <div class="div-1">
+        <div class="div-1c">
+          <select name="" class="select" id="select1"></select>
         </div>
-        <div class="relato" id="relato">
-          Selecciona un pokemon para poder atacar. Cuando cambies de pokemon es
-          probable que pierdas el turno de ataque. Cada pokemon solo puede ser
-          curado una vez.
+        <div class="div-1c">
+          <select name="" class="select" id="select2"></select>
+        </div>
+        <div class="div-1c">
+          <select name="" class="select" id="select3"></select>
         </div>
       </div>
-      <div class="container1">
-        <div class="div-ready">
-          <button id="btnReset">Reiniciar Juego</button>
-        </div>
+      <div class="div-ready">
+        <button class="btn-ready" id="btn-ready">Listo</button>
       </div>
-      <div class="container3" id="container3">
-        <span id="finalTitle">GAME OVER </span><br />
-        <img height="70%" id="finalImage" src="" alt="" />
-      </div>
-    </main>
+    </div>
+    <div class="container2" id="container2">
+      <h3 id="h3"></h3>
+      <div class="battle">
+        <div class="team">
+          <div class="pokemon" id="pokemon1">
+            <img src="" alt="" class="imgpokemon" id="imgpokemon1" />
+            <span class="danio"></span>
+            <div class="buttons">
+              <div class="potion">
+                <h5 class="h5" id="h51"></h5>
+                <i class="fa-solid fa-kit-medical" title="Curar"></i>
+              </div>
 
-    <script src="js/Pokemon.class.js" type="module"></script>
-    <script src="js/main.js" type="module"></script>
-  </body>
+              <h4>HP: <span class="h4" id="h41"></span></h4>
+              <div class="hp" id="hp1">
+                <div class="barra" id="barra1"></div>
+              </div>
+              <button class="btn-attack" id="btnattack1" disabled>
+                Ataque!
+              </button>
+            </div>
+          </div>
+
+          <div class="pokemon" id="pokemon2">
+            <img src="" alt="" class="imgpokemon" id="imgpokemon2" />
+            <span class="danio"></span>
+            <div class="buttons">
+              <div class="potion">
+                <h5 class="h5" id="h52"></h5>
+                <i class="fa-solid fa-kit-medical" title="Curar"></i>
+              </div>
+              <h4>HP: <span class="h4" id="h42"></span></h4>
+              <div class="hp" id="hp2">
+                <div class="barra" id="barra2"></div>
+              </div>
+              <button class="btn-attack" id="btnattack2" disabled>
+                Ataque!
+              </button>
+            </div>
+          </div>
+          <div class="pokemon" id="pokemon3">
+            <img src="" alt="" class="imgpokemon" id="imgpokemon3" />
+            <span class="danio"></span>
+            <div class="buttons">
+              <div class="potion">
+                <h5 class="h5" id="h53"></h5>
+                <i class="fa-solid fa-kit-medical" title="Curar"></i>
+              </div>
+              <h4>HP: <span class="h4" id="h43"></span></h4>
+              <div class="hp" id="hp3">
+                <div class="barra" id="barra3"></div>
+              </div>
+              <button class="btn-attack" id="btnattack3" disabled>
+                Ataque!
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="enemy" id="enemy">
+          <div class="pokemon" id="pokemonenemy1">
+            <img src="" alt="" class="imgpokemonenemy" id="imgpokemonenemy1" />
+            <span class="danio2"></span>
+            <div class="buttons">
+              <h5 class="h5" id="h5e1"></h5>
+              <h4 class="h4enemy">HP: <span id="h4e1"></span></h4>
+              <div class="hp-enemy" id="hpenemy1">
+                <div class="barra" id="barraenemy1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relato" id="relato">
+        Selecciona un pokemon para poder atacar. Cuando cambies de pokemon es
+        probable que pierdas el turno de ataque. Cada pokemon solo puede ser
+        curado una vez.
+      </div>
+    </div>
+    <div class="container1">
+      <div class="div-ready">
+        <button class="btn-ready" id="btnReset">Reiniciar Juego</button>
+      </div>
+    </div>
+    <div class="container3" id="container3">
+      <span id="finalTitle">GAME OVER </span><br />
+      <img height="70%" id="finalImage" src="" alt="" />
+    </div>
+  </main>
+
+  <script src="js/Pokemon.class.js" type="module"></script>
+  <script src="js/main.js" type="module"></script>
+</body>
+
 </html>
